@@ -1,0 +1,200 @@
+2025-06-25 11:15:02 - dataforge - INFO - DataForge application starting
+2025-06-25 11:15:04 - dataforge.handlers.kaggle_handler - INFO - Kaggle API authenticated
+2025-06-25 11:15:04 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 11:15:04 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 11:15:04 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 11:15:04 - dataforge - INFO - Dataset generator initialized
+2025-06-25 11:15:04 - dataforge - INFO - GUI initialized successfully
+2025-06-25 11:15:29 - dataforge.handlers.kaggle_handler - INFO - Searching Kaggle for 'shopping'
+2025-06-25 11:15:29 - dataforge - INFO - Started generation: keyword='shopping', rows=500, variations=2
+2025-06-25 11:15:29 - dataforge.handlers.kaggle_handler - ERROR - Dataset search failed: '<' not supported between instances of 'str' and 'int'
+2025-06-25 11:15:29 - dataforge.core.dataset_generator - ERROR - Generation failed: No datasets found for keyword: shopping
+2025-06-25 11:15:32 - dataforge - INFO - Generation complete: 0 files created
+2025-06-25 11:17:23 - dataforge - INFO - DataForge application starting
+2025-06-25 11:17:24 - dataforge.handlers.kaggle_handler - INFO - Kaggle API authenticated
+2025-06-25 11:17:24 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 11:17:24 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 11:17:24 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 11:17:24 - dataforge - INFO - Dataset generator initialized
+2025-06-25 11:17:24 - dataforge - INFO - GUI initialized successfully
+2025-06-25 11:17:30 - dataforge.handlers.kaggle_handler - INFO - Searching Kaggle for 'housing'
+2025-06-25 11:17:30 - dataforge - INFO - Started generation: keyword='housing', rows=500, variations=6
+2025-06-25 11:17:30 - dataforge.handlers.kaggle_handler - ERROR - Dataset search failed: '<' not supported between instances of 'str' and 'int'
+2025-06-25 11:17:30 - dataforge.core.dataset_generator - ERROR - Generation failed: No datasets found for keyword: housing
+2025-06-25 11:17:32 - dataforge - INFO - Generation complete: 0 files created
+2025-06-25 11:22:42 - dataforge - INFO - DataForge application starting
+2025-06-25 11:22:43 - dataforge.handlers.kaggle_handler - INFO - Kaggle API initialized successfully
+2025-06-25 11:22:43 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 11:22:43 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 11:22:43 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 11:22:43 - dataforge - INFO - Dataset generator initialized
+2025-06-25 11:22:43 - dataforge - INFO - GUI initialized successfully
+2025-06-25 11:22:50 - dataforge.handlers.kaggle_handler - INFO - Searching Kaggle for 'healthcare'
+2025-06-25 11:22:50 - dataforge - INFO - Started generation: keyword='healthcare', rows=500, variations=6
+2025-06-25 11:22:50 - dataforge.handlers.kaggle_handler - INFO - Found 0 suitable datasets
+2025-06-25 11:22:50 - dataforge.core.dataset_generator - ERROR - Generation failed: No datasets found for keyword: healthcare
+Traceback (most recent call last):
+  File "C:\Users\vasis\Downloads\DataForge\src\dataforge\core\dataset_generator.py", line 71, in generate_datasets
+    raise ValueError(f"No datasets found for keyword: {keyword}")
+ValueError: No datasets found for keyword: healthcare
+2025-06-25 11:22:50 - dataforge.core.dataset_generator - INFO - Generation completed in 0.5 seconds
+2025-06-25 11:22:52 - dataforge - INFO - Generation complete: 0 files created
+2025-06-25 11:23:37 - dataforge - INFO - DataForge application starting
+2025-06-25 11:23:38 - dataforge.handlers.kaggle_handler - INFO - Kaggle API initialized successfully
+2025-06-25 11:23:38 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 11:23:38 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 11:23:38 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 11:23:38 - dataforge - INFO - Dataset generator initialized
+2025-06-25 11:23:38 - dataforge - INFO - GUI initialized successfully
+2025-06-25 11:26:32 - dataforge - INFO - DataForge application starting
+2025-06-25 11:26:33 - dataforge.handlers.kaggle_handler - INFO - Kaggle API initialized successfully
+2025-06-25 11:26:33 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 11:26:33 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 11:26:33 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 11:26:33 - dataforge - INFO - Dataset generator initialized
+2025-06-25 11:26:33 - dataforge - INFO - GUI initialized successfully
+2025-06-25 11:26:44 - dataforge.handlers.kaggle_handler - INFO - Searching Kaggle for 'housing'
+2025-06-25 11:26:44 - dataforge.handlers.kaggle_handler - ERROR - Dataset search failed: The --size parameter has been deprecated. Please use --max-size and --min-size to filter dataset sizes.
+Traceback (most recent call last):
+  File "C:\Users\vasis\Downloads\DataForge\src\dataforge\handlers\kaggle_handler.py", line 38, in search_datasets
+    datasets = self.api.dataset_list(
+  File "C:\Users\vasis\AppData\Local\Programs\Python\Python39\lib\site-packages\kaggle\api\kaggle_api_extended.py", line 1280, in dataset_list
+    raise ValueError(
+ValueError: The --size parameter has been deprecated. Please use --max-size and --min-size to filter dataset sizes.
+2025-06-25 11:26:44 - dataforge - INFO - Started generation: keyword='housing', rows=500, variations=6
+2025-06-25 11:26:44 - dataforge.core.dataset_generator - ERROR - Generation failed: No datasets found for keyword: housing
+Traceback (most recent call last):
+  File "C:\Users\vasis\Downloads\DataForge\src\dataforge\core\dataset_generator.py", line 71, in generate_datasets
+    raise ValueError(f"No datasets found for keyword: {keyword}")
+ValueError: No datasets found for keyword: housing
+2025-06-25 11:26:44 - dataforge.core.dataset_generator - INFO - Generation completed in 0.0 seconds
+2025-06-25 11:26:55 - dataforge - INFO - Generation complete: 0 files created
+2025-06-25 11:32:49 - dataforge - INFO - DataForge application starting
+2025-06-25 11:32:50 - dataforge.handlers.kaggle_handler - INFO - Kaggle API initialized successfully
+2025-06-25 11:32:50 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 11:32:50 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 11:32:50 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 11:32:50 - dataforge - INFO - Dataset generator initialized
+2025-06-25 11:32:50 - dataforge - INFO - GUI initialized successfully
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Searching Kaggle for 'housing'
+2025-06-25 11:32:56 - dataforge - INFO - Started generation: keyword='housing', rows=500, variations=6
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Initial search returned 20 datasets
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Boston Housing
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing Prices Dataset
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing in London
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing Price Prediction
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Boston Housing dataset
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing Price Prediction Data
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing Price Data
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: New York Housing Market
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing Price Dataset
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: California Housing Data (1990)
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Miami Housing Dataset
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing price prediction
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset:  Housing Market & Prices
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Boston housing dataset
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: UK Housing Prices Paid
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Housing price in Beijing
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: U.S. Housing Market Factors
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Paris Housing Price Prediction
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Australian Housing Prices
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Found 20 suitable datasets
+2025-06-25 11:32:56 - dataforge.handlers.kaggle_handler - INFO - Downloading dataset: schirmerchad/bostonhoustingmlnd
+2025-06-25 11:32:57 - dataforge.handlers.kaggle_handler - INFO - Downloaded dataset to: C:\Users\vasis\Downloads\DataForge\src\data\reference_datasets\housing.csv (12.1 KB)
+2025-06-25 11:32:57 - dataforge.core.dataset_generator - INFO - Extracted schema with 4 columns
+2025-06-25 11:33:59 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\housing\housing_data_1.csv
+2025-06-25 11:34:35 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\housing\housing_data_2.csv
+2025-06-25 11:35:29 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\housing\housing_data_3.csv
+2025-06-25 11:36:01 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\housing\housing_data_4.csv
+2025-06-25 11:36:40 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\housing\housing_data_5.csv
+2025-06-25 11:37:10 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\housing\housing_data_6.csv
+2025-06-25 11:37:10 - dataforge.core.dataset_generator - INFO - Generation completed in 254.2 seconds
+2025-06-25 11:37:14 - dataforge - INFO - Generation complete: 6 files created
+2025-06-25 11:43:02 - dataforge - INFO - DataForge application starting
+2025-06-25 11:43:03 - dataforge.handlers.kaggle_handler - INFO - Kaggle API initialized successfully
+2025-06-25 11:43:03 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 11:43:03 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 11:43:03 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 11:43:03 - dataforge - INFO - Dataset generator initialized
+2025-06-25 11:43:03 - dataforge - INFO - GUI initialized successfully
+2025-06-25 11:49:45 - dataforge - INFO - DataForge application starting
+2025-06-25 11:49:46 - dataforge.handlers.kaggle_handler - INFO - Kaggle API initialized successfully
+2025-06-25 11:49:46 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 11:49:46 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 11:49:46 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 11:49:46 - dataforge - INFO - Dataset generator initialized
+2025-06-25 11:49:46 - dataforge - INFO - GUI initialized successfully
+2025-06-25 11:50:06 - dataforge - INFO - Started generation: keyword='finance', rows=500, variations=2
+2025-06-25 11:50:06 - dataforge.handlers.kaggle_handler - INFO - Searching Kaggle for 'finance'
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Initial search returned 20 datasets
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Finance Data 
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Personal Finance
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: US Consumer Finance Complaints
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: US Funds dataset from Yahoo Finance
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Finance & Accounting Courses - Udemy (13K+ course)
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Finance Loan approval Prediction Data
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Massive Yahoo Finance Dataset
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Income Survey | Finance Analysis
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Finance & Economics Dataset (2000 - Present)
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Indian Personal Finance and Spending Habits
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Campaign Finance versus Election Results
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Yahoo Finance All Stocks (Daily Update 163 Days)
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Finance Company Loan data
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Yahoo Finance - Industries - Dataset
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: US Campaign Finance 2019-2020 FEC
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Finance Factoring - IBM Late Payment Histories
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Time Series Forecasting with Yahoo Stock Price 
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Global Economy Indicators
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Reddit - Finance Posts (r/wallstreetbets, r/gm...)
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Found 20 suitable datasets
+2025-06-25 11:50:07 - dataforge.handlers.kaggle_handler - INFO - Downloading dataset: nitindatta/finance-data
+2025-06-25 11:50:08 - dataforge.handlers.kaggle_handler - INFO - Downloaded dataset to: C:\Users\vasis\Downloads\DataForge\src\data\reference_datasets\Original_data.csv (9.5 KB)
+2025-06-25 11:50:08 - dataforge.core.dataset_generator - INFO - Extracted schema with 24 columns
+2025-06-25 11:51:10 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\finance\finance_data_1.csv
+2025-06-25 11:52:07 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\finance\finance_data_2.csv
+2025-06-25 11:52:07 - dataforge.core.dataset_generator - INFO - Generation completed in 120.8 seconds
+2025-06-25 11:52:11 - dataforge - INFO - Generation complete: 2 files created
+2025-06-25 17:29:49 - dataforge - INFO - DataForge application starting
+2025-06-25 17:29:50 - dataforge.handlers.kaggle_handler - INFO - Kaggle API initialized successfully
+2025-06-25 17:29:52 - dataforge.handlers.mistral_handler - ERROR - Model verification failed: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-06-25 17:29:52 - dataforge - ERROR - Failed to initialize generator: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-06-25 17:29:55 - dataforge - INFO - GUI initialized successfully
+2025-06-25 17:30:22 - dataforge - INFO - DataForge application starting
+2025-06-25 17:30:23 - dataforge.handlers.kaggle_handler - INFO - Kaggle API initialized successfully
+2025-06-25 17:30:23 - dataforge.handlers.mistral_handler - INFO - Available models: ['mistral:latest']
+2025-06-25 17:30:23 - dataforge.handlers.mistral_handler - INFO - Verified Ollama model: mistral
+2025-06-25 17:30:23 - dataforge.core.dataset_generator - INFO - DatasetGenerator initialized successfully
+2025-06-25 17:30:23 - dataforge - INFO - Dataset generator initialized
+2025-06-25 17:30:23 - dataforge - INFO - GUI initialized successfully
+2025-06-25 17:30:54 - dataforge - INFO - Started generation: keyword='school', rows=500, variations=3
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Searching Kaggle for 'school'
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Initial search returned 20 datasets
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: School Shootings
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Indian School Education Statistics
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: School Student Daily Attendance
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: High School Student Performance & Demographics
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: School Shooting Data
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: School Tuition Dataset
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: School Dataset
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: High School Alcoholism and Academic Performance
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: School Program Attendance
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Massachusetts Public Schools Data
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: US Schools Dataset
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Student School Attendance
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Student Alcohol Consumption
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: School Shootings US 1990-present
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Average SAT Scores for NYC Public Schools
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Students Exam Scores: Extended Dataset
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: School Dataset IDN
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: Bullying in schools 
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Added dataset: US graduate school's admission parameters
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Found 20 suitable datasets
+2025-06-25 17:30:54 - dataforge.handlers.kaggle_handler - INFO - Downloading dataset: joebeachcapital/school-shootings
+2025-06-25 17:30:55 - dataforge.handlers.kaggle_handler - INFO - Downloaded dataset to: C:\Users\vasis\Downloads\DataForge\src\data\reference_datasets\school-shootings-data.csv (107.9 KB)
+2025-06-25 17:30:55 - dataforge.core.dataset_generator - INFO - Extracted schema with 50 columns
+2025-06-25 17:31:46 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\school\school_data_1.csv
+2025-06-25 17:32:30 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\school\school_data_2.csv
+2025-06-25 17:33:15 - dataforge.core.dataset_generator - INFO - Saved dataset: C:\Users\vasis\Downloads\DataForge\src\data\generated_datasets\school\school_data_3.csv
+2025-06-25 17:33:15 - dataforge.core.dataset_generator - INFO - Generation completed in 141.4 seconds
+2025-06-25 17:33:21 - dataforge - INFO - Generation complete: 3 files created
