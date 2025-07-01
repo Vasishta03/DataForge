@@ -1,6 +1,6 @@
 # 📊 DataForge
 
-**DataForge** is a Python-based GUI tool that automates the generation of synthetic datasets using real-world references from Kaggle and local LLMs. It's built for developers, testers, data scientists, and AI researchers who need realistic but safe-to-use datasets for experimentation or application development.
+**DataForge** is a Python tool that helps teams quickly generate usable datasets using AI. It fetches real data from Kaggle, creates fake but realistic versions using an LLM, and makes them securely accessible via GUI and API. Perfect for safe prototyping and model testing.
 
 ---
 
