@@ -1,43 +1,30 @@
 # 📊 DataForge
 
-**DataForge** is a Python tool that helps teams quickly generate usable datasets using AI. It fetches real data from Kaggle, creates fake but realistic versions using an LLM, and makes them securely accessible via GUI and API. Perfect for safe prototyping and model testing.
+**DataForge** is a Python-based GUI tool that automates the generation of synthetic datasets using real-world references from Kaggle and local LLMs (Mistral via Ollama). It now includes a production-ready REST API for secure, programmatic access to generated datasets.
+
+---
+
+## 🖼️ GUI Preview
+![image](https://github.com/user-attachments/assets/19dad03b-19e0-4818-8e96-34ca87293b2f)
 
 ---
 
 ## 🚀 Features
 
-- 🔍 **Keyword-based Search**: Input a topic (e.g., "housing") and automatically fetch related datasets from Kaggle using the Kaggle API.
-- 📥 **Reference Dataset Extraction**: Automatically downloads and parses relevant Kaggle datasets.
-- 🤖 **Synthetic Dataset Generation**: Uses Mistral (via Ollama, running locally) to generate multiple, non-identical datasets based on the original schema.
-- 🗂️ **Organized Storage**: Datasets are grouped into folders:
-  - `/kaggle_datasets/` – original reference data
+- **Keyword-based Search**: Input a topic (e.g., "housing") and automatically fetch related datasets from Kaggle using the Kaggle API.
+- **Reference Dataset Extraction**: Downloads and parses relevant Kaggle datasets.
+- **Synthetic Dataset Generation**: Uses Mistral (via Ollama, running locally) to generate multiple, non-identical datasets based on the original schema.
+- **Organized Storage**: Datasets are grouped into folders:
+  - `/reference_datasets/` – original reference data
   - `/generated_datasets/` – AI-generated data
-- 🖥️ **User-Friendly GUI**: Built with CustomTkinter for smooth input, progress tracking, and dataset previews.
-
----
-
-## 🖼️ GUI Preview
-
-> <img width="1051" alt="{28538D5B-E1CF-499B-B2E3-C66A00EEF1ED}" src="https://github.com/user-attachments/assets/d4e775cb-1f64-473e-814d-f55085751b4c" />
-
----
-
-## 🔧 How It Works
-
-1. Launch the GUI.
-2. Enter a keyword (e.g., `weather`, `finance`, `real estate`).
-3. DataForge:
-   - Uses your Kaggle API key to find the most relevant dataset.
-   - Downloads and extracts the data.
-   - Sends a schema-based prompt to Mistral running locally in Ollama.
-   - Generates 5–6 new datasets with varied but related content.
-4. Outputs are saved locally and can be previewed or reused.
+- **User-Friendly GUI**: Built with CustomTkinter for smooth input, progress tracking, and dataset previews.
+- **Production REST API**: Secure, authenticated API for listing and downloading generated datasets from any device on your network.
 
 ---
 
 ## 📁 Folder Structure
 
-```plaintext
+```
 DataForge/
 ├── main.py                          # Application entry point
 ├── requirements.txt                 # Python dependencies
@@ -46,6 +33,7 @@ DataForge/
 ├── README.md                        # Documentation
 ├── LICENSE                          # License file
 ├── .gitignore                       # Git ignore file
+├── api_server.py                    # API Server
 ├── src/
 │   └── dataforge/
 │       ├── __init__.py
@@ -77,65 +65,132 @@ DataForge/
 └── dist/                           # Distribution files
 
 ```
+
 ---
+
 ## 💻 Requirements
 
-```bash
-pip install -r requirements.txt
-```
+- Python 3.8+
+- pip install -r requirements.txt
+- Kaggle API key (`kaggle.json`) in `~/.kaggle/`
+- Ollama with Mistral model (`ollama pull mistral`)
 
 ---
 
 ## ⚙️ Setup
 
-1. Set up your Kaggle API key (`kaggle.json`) in `~/.kaggle/`.
-2. Install [Ollama](https://ollama.com/) and pull the Mistral model:
-
-   ```bash
-   ollama run mistral
+1. **Install dependencies:**
    ```
-3. Run the app:
+   pip install -r requirements.txt
+   ```
 
-   ```bash
+2. **Kaggle API setup:**
+   - Place your `kaggle.json` in `~/.kaggle/` (Linux/Mac) or `%USERPROFILE%\.kaggle\` (Windows).
+
+3. **Ollama setup:**
+   - Install Ollama and pull the Mistral model:
+     ```
+     ollama serve
+     ollama pull mistral
+     ```
+
+4. **Run the app:**
+   ```
    python main.py
    ```
 
 ---
 
-## 📌 Notes
+## 🖥️ How It Works
 
-* The synthetic datasets are **not exact replicas** but are **schema-aware variants** created by a locally run Mistral model.
-* The dataset generation time varies based on:
-
-  * Size of the original Kaggle dataset
-  * Number of synthetic datasets requested
-* API endpoints are **not yet implemented** — this will be included in the next release.
-
----
-
-## 🛠️ Planned Features (v2)
-
-* ✅ Dataset download via API
-* ⏳ REST API endpoints to access generated datasets
-* ✅ Column selector and schema editor before generation
-* ✅ Export logs and metadata with each dataset
-* ✅ Lightweight CPU model support
+- Launch the GUI.
+- Enter a keyword (e.g., `weather`, `finance`, `real estate`).
+- DataForge:
+  - Uses your Kaggle API key to find the most relevant dataset.
+  - Downloads and extracts the data.
+  - Sends a schema-based prompt to Mistral running locally in Ollama.
+  - Generates 5–6 new datasets with varied but related content.
+  - Outputs are saved locally and can be previewed or reused.
 
 ---
 
-## 📄 License
+## 🔗 API Integration
 
-MIT License
+### API Overview
+
+- **Base URL:** `http://localhost:5000`
+- **Authentication:** Bearer token (`Authorization: Bearer dataforge_api_2025`)
+- **Endpoints:**
+  - `GET /api/health` — Health check
+  - `GET /api/datasets` — List all generated datasets
+  - `GET /api/download//` — Download a specific CSV file
+  - `GET /api/download-zip/` — Download all datasets for a keyword as a ZIP
+  - `POST /api/generate` — Trigger dataset generation via API
+
+### Example Usage
+
+**List datasets:**
+```
+curl -H "Authorization: Bearer dataforge_api_2025" http://localhost:5000/api/datasets
+```
+
+**Download a file:**
+```
+curl -H "Authorization: Bearer dataforge_api_2025" \
+     -O http://localhost:5000/api/download/healthcare/healthcare_synthetic_v1_1234567890.csv
+```
+
+**Download all datasets for a keyword as ZIP:**
+```
+curl -H "Authorization: Bearer dataforge_api_2025" \
+     -O http://localhost:5000/api/download-zip/healthcare
+```
+
+**Trigger generation via API:**
+```
+curl -X POST -H "Authorization: Bearer dataforge_api_2025" \
+     -H "Content-Type: application/json" \
+     -d '{"keyword": "finance", "rows": 500, "variations": 6}' \
+     http://localhost:5000/api/generate
+```
+
+### API Security
+
+- The API is protected by a static API key (`algonomy` by default).
+- For production, change the API key in your `config.json` and restart the server.
+- By default, the API is accessible only on your local network. For remote access, see the FAQ below.
 
 ---
 
-## 👤 Author
+## 📦 FAQ
 
-[Vasishta Nandipati](https://github.com/Vasishta03)
+**Q: How do I access the API from another computer?**  
+A:  
+- Find your computer’s local IP address (e.g., `192.168.1.42`).
+- Start the API server with `host='0.0.0.0'` (already set in `api_server.py`).
+- On another device on the same network, use `http://192.168.1.42:5000` instead of `localhost`.
+- Use the API key in the `Authorization` header.
+
+**Q: How do I change the API key?**  
+A:  
+- Edit the `"api_key"` value in `config.json`.
+- Restart the API server.
+
+**Q: Can I use this API over the internet?**  
+A:  
+- For security, the API is intended for local network use only.
+- For public access, you must add HTTPS, user authentication, and firewall rules.
 
 ---
 
-## 🙌 Contributions
+## 🛠️ Planned Features
 
-Feel free to open issues, suggest features, or fork the repo. All ideas are welcome!
+- [ ] Advanced API key management (multiple users, revocation)
+- [ ] User roles and permissions
+- [ ] Cloud deployment support
+- [ ] More domain-specific prompt templates
 
+---
+## ⭐ Star the Repo
+
+If you find this project useful, consider giving it a ⭐ to support it!
