@@ -1,7 +1,7 @@
 {
     "kaggle": {
         "max_download_size_mb": 100,
-        "min_rating": 7.0,
+        "min_rating": 5.0,
         "max_results": 5
     },
     "mistral": {
@@ -13,6 +13,12 @@
         "default_rows": 500,
         "variations": 6,
         "max_rows": 2000
+    },
+    "api": {
+        "host": "0.0.0.0",
+        "port": 5000,
+        "api_key": "dataforge_api_2025",
+        "cors_enabled": true
     },
     "logging": {
         "log_file": "logs/dataforge.log",
