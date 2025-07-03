@@ -183,7 +183,7 @@ class AboutDialog(ctk.CTkToplevel):
         - Multiple output variations
         - Modern GUI interface
         
-        © 2024 DataForge Team
+        © 2025 DataForge Team
         MIT Licensed
         """
         
