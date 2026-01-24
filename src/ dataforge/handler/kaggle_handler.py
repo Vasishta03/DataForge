@@ -97,7 +97,6 @@ class KaggleDatasetHandler:
             return fallback_file
     
     def _create_fallback_csv(self, file_path: Path):
-        """Create a fallback CSV file when download fails"""
         import random
         
         data = {
