@@ -6,15 +6,12 @@ from typing import Dict, List
 logger = logging.getLogger(__name__)
 
 class MistralHandler:
-    """Enhanced Mistral handler with improved prompting techniques"""
-    
     def __init__(self, config):
         self.config = config
         self.model_name = config.get('model_name', 'mistral')
         self.max_tokens = config.get('max_tokens', 2000)
         self.temperature = config.get('temperature', 0.7)
         
-        # Advanced prompt templates based on research
         self.prompt_templates = {
             'healthcare': self._get_healthcare_template(),
             'finance': self._get_finance_template(),
@@ -26,7 +23,6 @@ class MistralHandler:
         self._verify_ollama()
     
     def _verify_ollama(self):
-        """Verify Ollama connection"""
         try:
             import ollama
             models = ollama.list()
@@ -46,13 +42,10 @@ class MistralHandler:
             self.available = False
     
     def generate(self, schema: Dict, num_rows: int, keyword: str = "") -> str:
-        """Generate synthetic data with enhanced prompts"""
         
-        # Select appropriate template
         template_key = keyword.lower() if keyword.lower() in self.prompt_templates else 'default'
         template = self.prompt_templates[template_key]
         
-        # Build enhanced prompt
         prompt = self._build_enhanced_prompt(schema, num_rows, template, keyword)
         
         if self.available and self.ollama:
@@ -79,19 +72,16 @@ class MistralHandler:
         return self._generate_enhanced_fallback(schema, num_rows, keyword)
     
     def _build_enhanced_prompt(self, schema: Dict, num_rows: int, template: Dict, keyword: str) -> str:
-        """Build enhanced prompt using research-based techniques"""
         
         columns = schema.get('columns', [])
         sample_data = schema.get('sample_data', {})
         
-        # Extract column information
         column_specs = []
         for col in columns:
             col_name = col['name']
             col_type = col['dtype']
             sample_val = sample_data.get(col_name, '')
             
-            # Enhanced type specification
             if 'int' in col_type.lower() or col_name.lower() in ['id', 'age', 'count', 'number']:
                 spec = f"{col_name}: integer values (like {sample_val})"
             elif 'float' in col_type.lower() or col_name.lower() in ['price', 'amount', 'rate', 'score']:
@@ -105,7 +95,6 @@ class MistralHandler:
             
             column_specs.append(spec)
         
-        # Build comprehensive prompt
         prompt = f"""You are an expert synthetic data generator specializing in {keyword} domain data.
 
 TASK: Generate exactly {num_rows} rows of realistic CSV data.
@@ -122,8 +111,6 @@ OUTPUT FORMAT:
 - Start with header row: {','.join(col['name'] for col in columns)}
 - Follow with exactly {num_rows} data rows
 - Use proper CSV formatting (comma-separated, no extra quotes unless needed)
-- Ensure realistic, domain-appropriate values
-- Maintain data consistency and relationships
 
 EXAMPLE STRUCTURE:
 {template['example']}
@@ -133,7 +120,6 @@ Generate the CSV data now:"""
         return prompt
     
     def _get_healthcare_template(self) -> Dict:
-        """Healthcare domain template based on research [2][5]"""
         return {
             'context': "Healthcare and medical data with patient records, treatments, and medical terminology. Focus on realistic medical scenarios while maintaining privacy.",
             'quality_requirements': """
@@ -146,7 +132,6 @@ Generate the CSV data now:"""
         }
     
     def _get_finance_template(self) -> Dict:
-        """Finance domain template"""
         return {
             'context': "Financial and banking data including transactions, accounts, and market data. Focus on realistic financial patterns and regulations.",
             'quality_requirements': """
@@ -159,7 +144,6 @@ Generate the CSV data now:"""
         }
     
     def _get_education_template(self) -> Dict:
-        """Education domain template"""
         return {
             'context': "Educational data including students, courses, grades, and academic performance. Focus on realistic academic scenarios.",
             'quality_requirements': """
@@ -172,7 +156,6 @@ Generate the CSV data now:"""
         }
     
     def _get_retail_template(self) -> Dict:
-        """Retail domain template"""
         return {
             'context': "Retail and e-commerce data including products, sales, and customer transactions. Focus on realistic shopping patterns.",
             'quality_requirements': """
@@ -185,7 +168,6 @@ Generate the CSV data now:"""
         }
     
     def _get_default_template(self) -> Dict:
-        """Default template for general data"""
         return {
             'context': "General business data with realistic patterns and relationships appropriate for the specified domain.",
             'quality_requirements': """
@@ -198,7 +180,6 @@ Generate the CSV data now:"""
         }
     
     def _clean_and_validate_csv(self, output: str, schema: Dict) -> str:
-        """Enhanced CSV cleaning and validation"""
         try:
             lines = output.strip().split('\n')
             csv_lines = []
@@ -232,7 +213,6 @@ Generate the CSV data now:"""
         return None
     
     def _clean_csv_line(self, line: str) -> str:
-        """Clean individual CSV line"""
         # Remove common artifacts
         line = re.sub(r'^[^a-zA-Z0-9]', '', line)  # Remove leading non-alphanumeric
         line = re.sub(r'[^a-zA-Z0-9,.\-_@\s]', '', line)  # Remove special chars except CSV-safe ones
@@ -244,7 +224,6 @@ Generate the CSV data now:"""
         return None
     
     def _generate_enhanced_fallback(self, schema: Dict, num_rows: int, keyword: str) -> str:
-        """Enhanced fallback generation with domain awareness"""
         columns = schema.get('columns', [])
         if not columns:
             return self._generate_basic_fallback(num_rows)
@@ -272,7 +251,6 @@ Generate the CSV data now:"""
         return '\n'.join(csv_lines)
     
     def _get_domain_generators(self, keyword: str) -> Dict:
-        """Get domain-specific value generators"""
         keyword = keyword.lower()
         
         if 'health' in keyword or 'medical' in keyword:
@@ -301,8 +279,6 @@ Generate the CSV data now:"""
             }
     
     def _generate_column_value(self, col_name: str, col_type: str, row_num: int, generators: Dict) -> str:
-        """Generate realistic column value"""
-        
         # ID columns
         if 'id' in col_name:
             return str(1000 + row_num)
@@ -346,7 +322,6 @@ Generate the CSV data now:"""
         return f"{col_name.title()}_{row_num + 1}"
     
     def _generate_basic_fallback(self, num_rows: int) -> str:
-        """Basic fallback when schema is unavailable"""
         headers = ['id', 'name', 'value', 'category', 'status']
         csv_lines = [','.join(headers)]
         
