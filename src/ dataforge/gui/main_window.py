@@ -13,14 +13,12 @@ from dataforge.core.dataset_generator import DatasetGenerator
 from dataforge.gui.components import ProgressFrame, StatusBar, ResultsFrame, LogViewer
 
 class DataForgeApp:
-    """Streamlined DataForge GUI without configuration tab"""
     
     def __init__(self, root: tk.Tk, config_manager, app_logger):
         self.root = root
         self.config_manager = config_manager
         self.logger = app_logger
         
-        # Application state
         self.generator = None
         self.current_keyword = ""
         self.generation_thread = None
@@ -88,7 +86,6 @@ class DataForgeApp:
         self.status_bar = StatusBar(self.main_frame)
     
     def _create_generation_content(self):
-        """Enhanced generation interface"""
         container = ctk.CTkFrame(self.generation_tab)
         container.pack(fill="both", expand=True, padx=20, pady=20)
         
@@ -98,14 +95,14 @@ class DataForgeApp:
         
         title_label = ctk.CTkLabel(
             title_frame,
-            text="🎨 Synthetic Dataset Generation",
+            text="Synthetic Dataset Generation",
             font=ctk.CTkFont(size=24, weight="bold")
         )
         title_label.pack(side="left", pady=15)
         
         api_indicator = ctk.CTkLabel(
             title_frame,
-            text="🔗 API Ready",
+            text=" API Ready",
             font=ctk.CTkFont(size=12, weight="bold"),
             text_color="green"
         )
@@ -117,7 +114,7 @@ class DataForgeApp:
         
         keyword_label = ctk.CTkLabel(
             input_frame,
-            text="🎯 Domain Keyword:",
+            text="Domain Keyword:",
             font=ctk.CTkFont(size=14, weight="bold")
         )
         keyword_label.pack(anchor="w", padx=20, pady=(20, 5))
@@ -136,7 +133,7 @@ class DataForgeApp:
         
         settings_label = ctk.CTkLabel(
             settings_frame,
-            text="⚙️ Generation Settings",
+            text=" Generation Settings",
             font=ctk.CTkFont(size=14, weight="bold")
         )
         settings_label.pack(anchor="w", padx=15, pady=(15, 10))
@@ -145,7 +142,7 @@ class DataForgeApp:
         settings_grid.pack(padx=15, pady=(0, 15))
         
         # Rows setting
-        rows_label = ctk.CTkLabel(settings_grid, text="📊 Rows per dataset:")
+        rows_label = ctk.CTkLabel(settings_grid, text="Rows per dataset:")
         rows_label.grid(row=0, column=0, padx=15, pady=10, sticky="w")
         
         self.rows_entry = ctk.CTkEntry(settings_grid, textvariable=self.rows_var, width=120)
@@ -175,7 +172,7 @@ class DataForgeApp:
         # START BUTTON
         self.start_btn = ctk.CTkButton(
             btn_container,
-            text="🚀 START ENHANCED GENERATION",
+            text="START ENHANCED GENERATION",
             command=self._start_generation,
             height=50,
             width=280,
@@ -207,19 +204,17 @@ class DataForgeApp:
         self.progress_frame.pack(fill="x", padx=20, pady=20)
     
     def _create_results_content(self):
-        """Enhanced results display with API integration"""
         self.results_frame = ResultsFrame(self.results_tab)
         self.results_frame.pack(fill="both", expand=True, padx=20, pady=20)
     
     def _create_api_content(self):
-        """API access and documentation tab"""
         container = ctk.CTkFrame(self.api_tab)
         container.pack(fill="both", expand=True, padx=20, pady=20)
         
         # Title
         title_label = ctk.CTkLabel(
             container,
-            text="🔗 API Access & Documentation",
+            text="API Access & Documentation",
             font=ctk.CTkFont(size=24, weight="bold")
         )
         title_label.pack(pady=(20, 15))
@@ -230,14 +225,14 @@ class DataForgeApp:
         
         status_label = ctk.CTkLabel(
             status_frame,
-            text="📡 API Server Status",
+            text="API Server Status",
             font=ctk.CTkFont(size=16, weight="bold")
         )
         status_label.pack(anchor="w", padx=15, pady=(15, 10))
         
         self.api_status_label = ctk.CTkLabel(
             status_frame,
-            text="🟢 API Server Running on http://localhost:5000",
+            text="API Server Running on http://localhost:5000",
             font=ctk.CTkFont(size=12),
             text_color="green"
         )
@@ -247,7 +242,7 @@ class DataForgeApp:
         key_frame = ctk.CTkFrame(status_frame)
         key_frame.pack(fill="x", padx=15, pady=(0, 15))
         
-        key_label = ctk.CTkLabel(key_frame, text="🔑 API Key:", font=ctk.CTkFont(weight="bold"))
+        key_label = ctk.CTkLabel(key_frame, text=" API Key:", font=ctk.CTkFont(weight="bold"))
         key_label.pack(anchor="w", padx=10, pady=(10, 5))
         
         key_text = ctk.CTkTextbox(key_frame, height=40, font=ctk.CTkFont(family="Consolas", size=12))
@@ -261,7 +256,7 @@ class DataForgeApp:
         
         actions_label = ctk.CTkLabel(
             actions_frame,
-            text="⚡ Quick Actions",
+            text="Quick Actions",
             font=ctk.CTkFont(size=16, weight="bold")
         )
         actions_label.pack(anchor="w", padx=15, pady=(15, 10))
@@ -271,21 +266,21 @@ class DataForgeApp:
         
         ctk.CTkButton(
             actions_buttons,
-            text="🌐 Open API Docs",
+            text="Open API Docs",
             command=lambda: webbrowser.open("http://localhost:5000/api/health"),
             width=150
         ).pack(side="left", padx=10, pady=10)
         
         ctk.CTkButton(
             actions_buttons,
-            text="📋 Copy API Key",
+            text="Copy API Key",
             command=self._copy_api_key,
             width=150
         ).pack(side="left", padx=10, pady=10)
         
         ctk.CTkButton(
             actions_buttons,
-            text="📊 View Datasets",
+            text="View Datasets",
             command=lambda: webbrowser.open("http://localhost:5000/api/datasets"),
             width=150
         ).pack(side="left", padx=10, pady=10)
@@ -296,36 +291,30 @@ class DataForgeApp:
         
         docs_label = ctk.CTkLabel(
             docs_frame,
-            text="📚 API Endpoints",
+            text="API Endpoints",
             font=ctk.CTkFont(size=16, weight="bold")
         )
         docs_label.pack(anchor="w", padx=15, pady=(15, 10))
         
         docs_text = """
-🔍 GET /api/health
+GET /api/health
    Health check and server status
 
-📊 GET /api/datasets  
+GET /api/datasets  
    List all generated datasets with download links
    
-📥 GET /api/download/<keyword>/<filename>
+GET /api/download/<keyword>/<filename>
    Download individual CSV files
    
-📦 GET /api/download-zip/<keyword>
+GET /api/download-zip/<keyword>
    Download all files for a keyword as ZIP
    
-🚀 POST /api/generate
+POST /api/generate
    Trigger dataset generation programmatically
 
 Example Usage:
 curl -H "Authorization: Bearer algonomy" \\
      http://localhost:5000/api/datasets
-
-Python Example:
-import requests
-headers = {'Authorization': 'Bearer algonomy'}
-response = requests.get('http://localhost:5000/api/datasets', headers=headers)
-datasets = response.json()
         """
         
         docs_textbox = ctk.CTkTextbox(
@@ -337,13 +326,12 @@ datasets = response.json()
         docs_textbox.configure(state="disabled")
     
     def _create_logs_content(self):
-        """System logs display"""
         logs_frame = ctk.CTkFrame(self.logs_tab)
         logs_frame.pack(fill="both", expand=True, padx=20, pady=20)
         
         logs_title = ctk.CTkLabel(
             logs_frame,
-            text="📋 System Logs",
+            text="System Logs",
             font=ctk.CTkFont(size=18, weight="bold")
         )
         logs_title.pack(pady=(20, 10))
@@ -372,7 +360,7 @@ datasets = response.json()
             self.generator.set_progress_callback(self._progress_callback)
             self.generator.set_status_callback(self._status_callback)
             
-            self.status_bar.set_status("🚀 DataForge initialized with API access")
+            self.status_bar.set_status("DataForge initialized with API access")
             self.logger.info("Dataset generator initialized")
         except Exception as e:
             self.logger.error(f"Failed to initialize generator: {e}")
@@ -412,11 +400,9 @@ datasets = response.json()
             messagebox.showerror("Error", f"Invalid input: {e}")
             return
         
-        # Update button states
         self.start_btn.configure(state="disabled", fg_color="#666666")
         self.stop_btn.configure(state="normal", fg_color="#dc3545")
         
-        # Reset progress
         self.progress_frame.reset()
         
         # Set state
@@ -432,7 +418,7 @@ datasets = response.json()
         )
         self.generation_thread.start()
         
-        self.logger.info(f"🚀 Started enhanced generation: {keyword}")
+        self.logger.info(f" Started enhanced generation: {keyword}")
 
     def _stop_generation(self):
         if not self.is_generating:
@@ -472,7 +458,7 @@ datasets = response.json()
         self.stop_btn.configure(state="disabled", fg_color="#666666")
         
         # Update progress
-        self.progress_frame.update_progress(1.0, "✨ Generation completed successfully!")
+        self.progress_frame.update_progress(1.0, " Generation completed successfully!")
         
         # Display results with API info
         self.results_frame.display_results(results)
@@ -484,15 +470,15 @@ datasets = response.json()
         files_created = len(results.get('generated_files', []))
         if files_created > 0:
             api_info = results.get('api_info', {})
-            message = f"🎉 Generated {files_created} datasets for '{self.current_keyword}'\n\n"
-            message += f"📡 API Access:\n"
+            message = f"Generated {files_created} datasets for '{self.current_keyword}'\n\n"
+            message += f" API Access:\n"
             message += f"Base URL: {api_info.get('base_url', 'http://localhost:5000')}\n"
             message += f"Download ZIP: {api_info.get('endpoints', {}).get('download_zip', 'N/A')}\n"
             message += f"API Key: {api_info.get('api_key', 'algonomy')}"
             
-            messagebox.showinfo("🎉 Generation Complete", message)
+            messagebox.showinfo("Generation Complete", message)
         else:
-            messagebox.showwarning("⚠️ Warning", "No files were generated. Check logs for details.")
+            messagebox.showwarning(" Warning", "No files were generated. Check logs for details.")
 
     def _on_generation_error(self, error):
         # Reset button states
@@ -512,7 +498,7 @@ datasets = response.json()
         api_key = "algonomy"
         self.root.clipboard_clear()
         self.root.clipboard_append(api_key)
-        messagebox.showinfo("📋 Copied", "API key copied to clipboard!")
+        messagebox.showinfo("Copied", "API key copied to clipboard!")
     
     def _on_closing(self) -> None:
         if self.is_generating:
