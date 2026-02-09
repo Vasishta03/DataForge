@@ -173,16 +173,16 @@ def trigger_generation():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    print("🚀 DataForge API Server Starting")
-    print("📡 API Base URL: http://localhost:5000")
-    print("🔑 API Key: algonomy")
-    print("📚 Endpoints:")
+    print("DataForge API Server Starting")
+    print("API Base URL: http://localhost:5000")
+    print("API Key: algonomy")
+    print("Endpoints:")
     print("   GET  /api/health")
     print("   GET  /api/datasets")
     print("   GET  /api/download/<keyword>/<filename>")
     print("   GET  /api/download-zip/<keyword>")
     print("   POST /api/generate")
-    print("\n📖 Usage Example:")
+    print("\nUsage Example:")
     print("   curl -H 'Authorization: Bearer algonomy' http://localhost:5000/api/datasets")
     
     app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
